@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>beauty-map</title>
+    <style>
+        #container {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<svg id="container">
+
+</svg>
+
+<script src="./lib/d3.js"></script>
+<script src="./lib/snap.svg.js"></script>
+<script src="./beauty-map.js"></script>
+<script>
+    var handleClick = function(param) {
+        console.log('[clicked]', param);
+    };
+    var m = new BeautyMap({
+        width: 600,
+        height: 400,
+        id: '#container',
+        geoUrl: './data/china.json',
+        backgroundImage: './img/star.jpg',
+        data: [
+            {name: '河北', value: 50},
+            {name: '安徽', value: 100},
+            {name: '新疆', value: 83}
+        ],
+        onClick: handleClick
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id":"65",
+        "name":"新疆",
+        "cp":[84.9023,41.748],
+        "childNum":18
+      },
+      "geometry":{
+        "type":"Polygon",
+        "coordinates":[
+          [[0, 0],[100, 0],[100, 50], [0, 50]]
+        ]
+      }
+    }
+  ]
+}

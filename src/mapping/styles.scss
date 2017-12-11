@@ -1,0 +1,71 @@
+.mapping {
+  position: relative;
+  .board {
+    user-select: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .test-board {
+    .test-dot {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: red;
+      color: #fff;
+      white-space: nowrap;
+    }
+  }
+
+  .mapping-board {
+    z-index: 1;
+    .map {
+      stroke: #fff;
+      stroke-width: 1;
+      fill: none
+    }
+    .dot-start, .dot-end {
+      r: 5;
+      transition: r .1s;
+      &:hover {
+        r: 8
+      }
+    }
+    .dot-start {
+      fill: rgba(21, 228, 21, 1);
+    }
+    .dot-end {
+      fill: rgba(53, 117, 224, 1);
+    }
+    .line {
+      pointer-events: none;
+      stroke-width: 1;
+      stroke: red
+    }
+    .triangle-source {
+      pointer-events: none;
+      fill: rgba(21, 228, 21, 0.2);
+      stroke: rgba(21, 228, 21, 1);
+    }
+    .triangle-target {
+      pointer-events: none;
+      fill: rgba(53, 117, 224, 0.2);
+      stroke: rgba(53, 117, 224, 1);
+    }
+  }
+
+  .result-board {
+    user-select: all;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    overflow: auto;
+    padding: 0 15px;
+  }
+}
