@@ -8,7 +8,6 @@ class Brush extends Component {
     const { width, height } = this.props;
 
     this.brush = d3.brushX()
-      .extent([[0, 0], [width, height]])
       .on('brush end', this.brushed);
 
     this.zoom = d3.zoom()
@@ -19,11 +18,27 @@ class Brush extends Component {
   }
 
   componentDidMount() {
-    const { width } = this.props;
+    this.updateBrush();
+  }
+
+  componentDidUpdate() {
+    this.updateBrush();
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.width !== this.props.width) {
+      return true;
+    }
+    return false;
+  }
+
+  updateBrush = () => {
+    const { width, height } = this.props;
+    this.brush.extent([[0, 0], [width, height]]);
     d3.select(this.refs.brush)
       .call(this.brush)
       .call(this.brush.move, [0, width]);
-  }
+  };
 
   brushed = () => {
     if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") {   // ignore brush-by-zoom
