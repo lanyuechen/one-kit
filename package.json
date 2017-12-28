@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "karma start",
-    "start": "webpack-dev-server --open",
-    "dist": "rm -rf dist && gulp"
+    "start": "webpack-dev-server --open --config src/xxx/webpack.config.js",
+    "dist": "rm -rf dist && gulp",
+    "build": "webpack -p --progress --color --config webpack.build.config.js"
   },
   "repository": {
     "type": "git",

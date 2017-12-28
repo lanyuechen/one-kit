@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/example/index.js'
+    index: './src/xxx/example.js'
   },
   output: {
     filename: 'bundle.js',
@@ -12,18 +12,18 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     host: '0.0.0.0',
-    contentBase: './src/example'
+    contentBase: './'
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Output Management',
-      template: 'src/example/index.html'
+      template: 'src/xxx/index.html'
     })
   ],
   resolve: {
     extensions: ['.js'],
     alias: {
-      lib: path.resolve(__dirname, 'src/lib')
+      lib: path.resolve(__dirname, 'src/xxx/lib')
     }
   },
   module: {

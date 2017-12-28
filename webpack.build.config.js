@@ -1,27 +1,20 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/example/index.js'
+    index: './src/mapping/model.js'
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    host: '0.0.0.0',
-    contentBase: './src/example'
+    path: path.resolve(__dirname, 'lib'),
+    filename: 'mapping.min.js',
+    library: 'Mapping',
+    libraryTarget: 'umd'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Output Management',
-      template: 'src/example/index.html'
-    })
+
   ],
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     alias: {
       lib: path.resolve(__dirname, 'src/lib')
     }

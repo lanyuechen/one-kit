@@ -68,37 +68,6 @@ export function uuid(sep = '', len = 24) {
 }
 
 /**
- * 碰撞检测
- * @param a 矩形a,包涵x, y, width, height
- * @param b 矩形b,包涵x, y, width, height
- * @returns {boolean}
- */
-export function collision(a, b) {
-  const { x, y, width: w, height: h } = a;
-  const { x: _x, y: _y, width: _w, height: _h } = b;
-
-  return !(x > _x + _w || x + w < _x || y > _y + _h || y + h < _y);
-}
-
-export function collisionType(a, b) {
-  const { x, y, width: w, height: h } = a;
-  const { x: _x, y: _y, width: _w, height: _h } = b;
-
-  const nw = _x < x + w && _x > x && _y < y + h && _y > y;
-  const sw = _x < x + w && _x > x && _y + _h < y + h && _y + _h > y;
-  const ne = _x + _w < x + w && _x + _w > x && _y < y + h && _y > y;
-  const se = _x + _w < x + w && _x + _w > x && _y + _h < y + h && _y + _h > y;
-  if (nw && sw) return 'w-resize';
-  if (nw && ne) return 'n-resize';
-  if (ne && se) return 'e-resize';
-  if (se && sw) return 's-resize';
-  if (nw) return 'nw-resize';
-  if (ne) return 'ne-resize';
-  if (se) return 'se-resize';
-  if (nw) return 'nw-resize';
-}
-
-/**
  * 动画函数,用requestAnimationFrame包装,防止频繁调用
  */
 export const throttle = (function() {

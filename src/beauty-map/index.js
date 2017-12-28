@@ -1,10 +1,10 @@
-const RANGE = ['yellow', 'red', 'blue'];
 const DEFAULT_OPACITY = 0.2;
 
 class BeautyMap {
-  constructor({ id, geoUrl, width, height, backgroundImage, data, onClick }) {
+  constructor({ id, geoUrl, width, height, backgroundImage, data, range, onClick }) {
     this.width = width;
     this.height = height;
+    this.range = range;
     this.snap = Snap(id);
     this.onClick = onClick;
 
@@ -24,7 +24,7 @@ class BeautyMap {
 
     const scale = d3.scaleLinear()
       .domain([dMap._min, dMap._max])
-      .range(RANGE);
+      .range(this.range);
 
     geo.features.map(d => {
       const dd = dMap[d.properties.name];

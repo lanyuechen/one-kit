@@ -15,9 +15,9 @@
 
 </svg>
 
-<script src="./lib/d3.js"></script>
-<script src="./lib/snap.svg.js"></script>
-<script src="./beauty-map.js"></script>
+<script src="../lib/d3.js"></script>
+<script src="../lib/snap.svg.js"></script>
+<script src="../../beauty-map/index.js"></script>
 <script>
     var handleClick = function(param) {
         console.log('[clicked]', param);
@@ -26,8 +26,9 @@
         width: 600,
         height: 400,
         id: '#container',
-        geoUrl: './data/china.json',
-        backgroundImage: './img/star.jpg',
+        geoUrl: './china.json',
+        range: ['red', 'blue'],
+        backgroundImage: './star.jpg',
         data: [
             {name: '河北', value: 50},
             {name: '安徽', value: 100},

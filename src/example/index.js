@@ -12,7 +12,7 @@ class Demo extends Component {
   render() {
     return (
       <Mapping
-        img="data/bg.png"
+        img="data/bg.jpeg"
         geoUrl="data/geo/china.json"
         width={1100}
         height={900}

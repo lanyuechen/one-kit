@@ -1,0 +1,46 @@
+{
+  "type": "chart",
+  "coordinate": {
+    "type": "rect",
+    "paddingInner": 0.2,
+    "paddingOuter": 0.2,
+    "x": {
+      "type": "category",
+      "data": [0, 1, 2, 3, 4]
+    },
+    "y": {
+      "type": "value",
+      "max": 100,
+      "min": 0
+    }
+  },
+  "brush": {
+
+  },
+  "children": [
+    10,
+    {
+      "type": "chart",
+      "coordinate": {
+        "type": "rect",
+        "paddingInner": 0.2,
+        "paddingOuter": 0.2,
+        "x": {
+          "type": "category",
+          "data": [0, 1, 2]
+        },
+        "y": {
+          "type": "value",
+          "max": 100,
+          "min": 0
+        }
+      },
+      "brush": {
+
+      },
+      "children": [
+        10, 50, 100
+      ]
+    }, 50, 80, 100
+  ]
+}
