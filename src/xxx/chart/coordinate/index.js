@@ -18,7 +18,7 @@ class Coordinate {
   scale(d, range) {
     if (d.type === 'category') {
       return d3.scaleBand()
-        .domain(d.data)
+        .domain(d.data.map((dd, i) => i))
         .range(range)
         .paddingInner(this.paddingInner)
         .paddingOuter(this.paddingOuter);

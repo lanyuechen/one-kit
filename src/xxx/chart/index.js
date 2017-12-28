@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 
+import { uuid } from './lib/common';
 import Coordinate from './coordinate';
 import Ele from './element';
 import Brush from './components/brush';
-import { uuid } from './lib/common';
+import XAxis from './components/x-axis';
 
 const BRUSH_HEIGHT = 20;
+const XAXIS_HEIGHT = 20;
 
 class Chart extends Component {
   constructor(props) {
@@ -63,7 +65,7 @@ class Chart extends Component {
   render() {
     let { option, rect: { x, y, width, height } } = this.props;
 
-    let x2 = x, y2 = y, brushWidth = width;
+    let x2 = x, y2 = y, oldWidth = width;
     if (option.brush) {
       x2 = this.scale(0);
       width = this.scale(width) - x2;
@@ -73,7 +75,7 @@ class Chart extends Component {
       y2 = 0;
     }
 
-    const coord = new Coordinate(option.coordinate, Math.abs(width), Math.abs(height));
+    const coord = new Coordinate(option.coordinate, Math.abs(width), Math.abs(height - XAXIS_HEIGHT));
 
     const clipId = 'c' + uuid();
 
@@ -81,7 +83,7 @@ class Chart extends Component {
       <g transform={`translate(${x}, ${y})`}>
         <defs>
           <clipPath id={clipId}>
-            <rect width={brushWidth} height={height} />
+            <rect transform={`translate(${-x2}, ${-y2})`} width={oldWidth} height={height} />
           </clipPath>
         </defs>
 
@@ -105,13 +107,16 @@ class Chart extends Component {
               <Ele key={i} option={option} rect={rect} data={d} />
             );
           })}
+          <g transform={`translate(0, ${height - XAXIS_HEIGHT})`}>
+            <XAxis option={option.coordinate} scale={coord.xScale} />
+          </g>
         </g>
 
         {option.brush && (
           <g transform={`translate(0, ${height})`}>
             <Brush
               ref="brush"
-              width={brushWidth}
+              width={oldWidth}
               height={BRUSH_HEIGHT}
               onBrushed={this.handleBrushed}
               onZoomed={this.handleZoomed}

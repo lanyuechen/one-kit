@@ -6,7 +6,7 @@
     "paddingOuter": 0.2,
     "x": {
       "type": "category",
-      "data": [0, 1, 2, 3, 4]
+      "data": ["北京", "河北", "上海", "山西", "广东"]
     },
     "y": {
       "type": "value",
@@ -27,7 +27,7 @@
         "paddingOuter": 0.2,
         "x": {
           "type": "category",
-          "data": [0, 1, 2]
+          "data": ["保定", "石家庄", "唐山"]
         },
         "y": {
           "type": "value",
